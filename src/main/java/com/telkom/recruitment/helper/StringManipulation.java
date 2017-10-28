@@ -25,7 +25,7 @@ import java.util.UUID;
 public class StringManipulation {
 
     public static String createNewFileName() {
-        return UUID.randomUUID().toString() + ".pdf";
+        return "lamaran_"+UUID.randomUUID().toString() + ".pdf";
     }
 
     public static byte[] base64ToByte(String base64) {

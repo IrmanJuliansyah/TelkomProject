@@ -1,6 +1,8 @@
 package com.telkom.recruitment.domain;
 
+import com.telkom.recruitment.domain.User;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -17,12 +19,12 @@ public class Upload implements Serializable {
         this.fileUpload = fileUpload;
     }
 
+
     public Upload(String idUpload, String nameUpload, String fileUpload) {
-        this.idUpload   = idUpload;
+        this.idUpload = idUpload;
         this.nameUpload = nameUpload;
         this.fileUpload = fileUpload;
     }
-
 
     @Id
     @Field(value = "_id")
@@ -35,6 +37,9 @@ public class Upload implements Serializable {
 
     @Field(value = "file_upload")
     private String fileUpload;
+
+    @DBRef(lazy = true)
+    private User user;
 
     public String getIdUpload() {
         return idUpload;
@@ -58,5 +63,13 @@ public class Upload implements Serializable {
 
     public void setFileUpload(String fileUpload) {
         this.fileUpload = fileUpload;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

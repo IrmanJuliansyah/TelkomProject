@@ -1,6 +1,7 @@
 package com.telkom.recruitment.controller;
 
 import com.telkom.recruitment.domain.Upload;
+import com.telkom.recruitment.domain.User;
 import com.telkom.recruitment.helper.HateoasResource;
 import com.telkom.recruitment.helper.NotFoundRestHelper;
 import com.telkom.recruitment.helper.ValidationIdHelper;
@@ -29,6 +30,7 @@ public class UploadController implements ValidationIdHelper{
 
     @GetMapping(value = "/upload")
     public ResponseEntity<?> getUploads(){
+
         HateoasResource hateoasResource = new HateoasResource(uploadService.getUploads());
         hateoasResource.add(linkTo(methodOn(UploadController.class).getUploads()).withSelfRel());
         return new ResponseEntity<>(hateoasResource, HttpStatus.OK);
